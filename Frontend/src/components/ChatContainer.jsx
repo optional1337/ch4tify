@@ -1,6 +1,5 @@
 import { chatStore } from "../store/chatStore";
 import { useEffect, useRef, useState } from "react";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import MessageSkeleton from "./skelatons/Message-Skeleton";

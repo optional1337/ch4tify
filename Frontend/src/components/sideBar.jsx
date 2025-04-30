@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { chatStore } from "../store/chatStore";
 import { useAuthStore } from "../store/authStore";
-import SidebarSkeleton from "./skelatons/sidebar-skeleton";
+import SidebarSkeleton from "./skelatons/Sidebar-Skeleton";
 import { Users as GroupIcon, UserPlus, Search, X } from "lucide-react";
 import AddUser from "./AddUser";
 import AddGroup from "./AddGroup";
