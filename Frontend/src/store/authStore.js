@@ -7,8 +7,8 @@ import { io } from "socket.io-client";
 import { chatStore } from './chatStore';
 
 
-const API_URL = 'http://localhost:5000/api/auth'
-const BASE_URL = 'http://localhost:5000'
+const API_URL = 'https://ch4tify-backend.onrender.com/api/auth'
+const BASE_URL = 'https://ch4tify-backend.onrender.com'
 axios.defaults.withCredentials = true;
 export const useAuthStore = create((set, get) => ({
     user: null,
@@ -88,28 +88,28 @@ export const useAuthStore = create((set, get) => ({
     },
     
 
-    adminLogin: async (secretKey) => {
-        set({ isLoading: true, error: null });
+    // adminLogin: async (secretKey) => {
+    //     set({ isLoading: true, error: null });
     
-        try {
-            const response = await axios.post(
-                "http://localhost:5000/api/admin/login",
-                { secretKey },
-                { withCredentials: true }  // ✅ Important for cookies
-            );
+    //     try {
+    //         const response = await axios.post(
+    //             "http://localhost:5000/api/admin/login",
+    //             { secretKey },
+    //             { withCredentials: true }  // ✅ Important for cookies
+    //         );
     
-            set({
-                isAuthenticated: true,
-                isLoading: false,
-                error: null
-            });
+    //         set({
+    //             isAuthenticated: true,
+    //             isLoading: false,
+    //             error: null
+    //         });
     
-            return response.data;
-        } catch (error) {
-            set({ isLoading: false, error: error.response?.data?.message || "Error verifying secret key" });
-            throw error;
-        }
-    }, 
+    //         return response.data;
+    //     } catch (error) {
+    //         set({ isLoading: false, error: error.response?.data?.message || "Error verifying secret key" });
+    //         throw error;
+    //     }
+    // }, 
 
     verifyEmail: async(code) => {
         set({ isLoading: true, error: null });
