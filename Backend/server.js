@@ -5,7 +5,7 @@ import cors from "cors";
 
 import path from "path";
 
-import { connectDB } from "../db/connectDB.js";
+import { connectDB } from "./db/connectDB.js";
 
 import authRoutes from "./routes/auth-route.js";
 import messageRoutes from "./routes/message-route.js";
