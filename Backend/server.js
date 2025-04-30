@@ -33,8 +33,9 @@ app.use("/api/messages", messageRoutes);
 
 
     app.use(express.static(path.join(__dirname, "../Frontend/dist")));
-  
+    console.log("Serving static from:", path.join(__dirname, "../Frontend/dist"));
     app.get("*", (req, res) => {
+      console.log("Fallback route hit:", req.url);
       res.sendFile(path.join(__dirname, "../Frontend", "dist", "index.html"));
     });
   
