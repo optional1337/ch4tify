@@ -5,7 +5,6 @@ import bcryptjs, { compare } from "bcryptjs";
 import crypto from "crypto";
 import { sendVerificationEmail, sendWelcomeEmail, sendPasswordResetEmail, sendResetSuccessEmail } from "../mailtrap/emails.js";
 import { generateTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
-import { send } from "process";
 import cloudinary from '../utils/cloudinary.js'
 import jwt from "jsonwebtoken";
 import { io, getReceiverSocketId } from "../utils/socket.js";
