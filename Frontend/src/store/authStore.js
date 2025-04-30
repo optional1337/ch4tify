@@ -27,7 +27,7 @@ export const useAuthStore = create((set, get) => ({
     signup: async (email, password, name, alias) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/signup`, { email, password, name, alias });
+            const response = await axios.post(`${API_URL}/signup`, { email, password, name, alias }, { withCredentials: true });
             set({ user: response.data.user, isAuthenticated: true, isLoading: false });
         } catch (error) {
             set({ error: error.response.data.message || "Error signing up", isLoading: false });
@@ -38,7 +38,7 @@ export const useAuthStore = create((set, get) => ({
     login: async (email, password) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/login`, { email, password });
+            const response = await axios.post(`${API_URL}/login`, { email, password }, { withCredentials: true });
             set({ 
                 isAuthenticated: true,
                 user: response.data.user,
@@ -114,7 +114,7 @@ export const useAuthStore = create((set, get) => ({
     verifyEmail: async(code) => {
         set({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/verify-email`, { code });
+            const response = await axios.post(`${API_URL}/verify-email`, { code }, { withCredentials: true });
             set({ user: response.data.user, isAuthenticated: true, isLoading: false });
             get().connectSocket()
             return response.data;
@@ -128,7 +128,7 @@ export const useAuthStore = create((set, get) => ({
         // await new Promise((resolve) => setTimeout(resolve, 1000));
         set({ isCheckingAuth: true, error: null });
         try {
-            const response = await axios.get(`${API_URL}/check-auth`);
+            const response = await axios.get(`${API_URL}/check-auth`, { withCredentials: true }) ;
             console.log("checkAuth user response:", response.data.user);
             set({ user: response.data.user, isAuthenticated: true, isCheckingAuth: false });
             get().connectSocket()
@@ -140,7 +140,7 @@ export const useAuthStore = create((set, get) => ({
     forgotPassword: async(email) => {
         set ({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/forgot-password`, {email});
+            const response = await axios.post(`${API_URL}/forgot-password`, {email}, { withCredentials: true });
             set({isLoading: false, message: response.data.message});
         } catch (error) {
             set({isLoading: false, error: error.response.data.message || "Error sending reset password email"});
@@ -151,7 +151,7 @@ export const useAuthStore = create((set, get) => ({
     resetPassword: async(token, password) => {
         set ({isLoading: true, error: null})
         try {
-            const response = await axios.post(`${API_URL}/reset-password/${token}`, {password})
+            const response = await axios.post(`${API_URL}/reset-password/${token}`, {password}, { withCredentials: true })
             set({message: response.data.message, isLoading: false})
             return response.data; // Return response data so frontend can access it
         } catch (error) {
@@ -180,7 +180,7 @@ export const useAuthStore = create((set, get) => ({
     updateProfile: async(data) => {
         set({ isUpdatingProfile: true, isAuthenticated: true });
     try {
-      const res = await axios.put(`${API_URL}/update-profile`, data);
+      const res = await axios.put(`${API_URL}/update-profile`, data, { withCredentials: true });
       set({ user: res.data.user });
       toast.success("Profile updated successfully");
     } catch (error) {
