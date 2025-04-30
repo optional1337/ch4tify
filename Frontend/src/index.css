@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@plugin "daisyui" {
+    themes: all;
+}
+
+.custom-toast {
+    @apply text-xl flex items-center ; /* justify-center text-white rounded-lg shadow-lg text-center */
+    background-color: bg-base-100 !important;
+    color: bg-primary !important;
+    border: .2px solid bg-base-200 !important;
+  }
+
+
+  /* input {
+    caret-color: green; 
+    font-size: 0.8em; 
+    line-height: normal; 
+} */
+
+/* Add to your globals.css or tailwind.config.css */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s steps(1) infinite;
+}
