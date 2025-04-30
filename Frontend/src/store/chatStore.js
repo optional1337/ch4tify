@@ -4,7 +4,7 @@ import axios from "axios";
 // import { axiosInstance } from "../lib/axios";
 import { useAuthStore } from "./authStore";
 
-const axiosInstance = axios.create({ baseURL: 'http://localhost:5000/api' });
+const axiosInstance = axios.create({ baseURL: 'https://ch4tify-backend.onrender.com/api' });
 axios.defaults.withCredentials = true;
 export const chatStore = create((set, get) => ({
   messages: [],
