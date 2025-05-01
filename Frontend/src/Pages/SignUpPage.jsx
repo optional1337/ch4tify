@@ -238,7 +238,7 @@ const SignUpPage = () => {
           ref={recaptchaRef}
   sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
   onChange={(token) => setRecaptchaToken(token)}
-  size="invisible"
+  className="my-4"
   theme="dark"
 />
 
