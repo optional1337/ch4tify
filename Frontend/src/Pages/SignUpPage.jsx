@@ -234,13 +234,15 @@ const SignUpPage = () => {
           {isPasswordFocused && <PasswordStrengthMeter password={password} />}
           {/* <PasswordStrengthMeter password={password} /> */}
 
+          <div className="scale-75 sm:scale-90 origin-top-left my-4">
           <ReCAPTCHA
           ref={recaptchaRef}
-  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-  onChange={(token) => setRecaptchaToken(token)}
-  className="my-4"
-  theme="dark"
-/>
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          onChange={(token) => setRecaptchaToken(token)}
+          theme="dark"
+        />
+        </div>
+          
 
           <motion.button
             className='mt-5 w-full py-3 px-4 bg-white text-black cursor-pointer font-bold rounded-lg shadow-xl 
