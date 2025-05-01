@@ -77,7 +77,7 @@ const ForgotPasswordPage = () => {
                   type='email'
                   placeholder='Email Address'
                   value={email}
-                  onChange={(e) => {setEmail(e.target.value);setIsTyping(true);}}
+                  onChange={(e) => {setEmail(e.target.value);}}
                   required
                   className='w-full pl-10 pr-4 py-2.5 sm:py-3 bg-black/70 rounded-lg text-white placeholder-white/70 
                    transition duration-300 border border-white/30 focus:ring-white focus:border-white'
