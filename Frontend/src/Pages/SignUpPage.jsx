@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { toast } from "sonner";
 import PasswordStrengthMeter from '../components/PasswordStrength';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { useRef } from 'react';
 
 const SignUpPage = () => {
   const [name, setName] = useState('');
@@ -19,6 +21,8 @@ const SignUpPage = () => {
   const navigate = useNavigate();
   const { signup, error: signupError, isLoading, resetError } = useAuthStore();
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
+  const recaptchaRef = useRef(null);
 
   useEffect(() => {
     resetError();
@@ -70,13 +74,17 @@ const SignUpPage = () => {
     if (!confirmPassword) newErrors.confirmPassword = 'Confirm Password is required';
     if (password && confirmPassword && password !== confirmPassword) newErrors.confirmPassword = 'Passwords do not match';
     if (aliasError) newErrors.alias = aliasError;
+    if (!recaptchaToken) {
+      toast.error('Please complete the CAPTCHA');
+      return;
+    }
 
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length > 0) return;
 
     try {
-      await signup(email, password, name, alias);
+      await signup(email, password, name, alias, recaptchaToken);
   
       // Show success toast for email verification
       toast.success('verify your email');
@@ -87,6 +95,9 @@ const SignUpPage = () => {
       }, 2000);  // Delay navigation for 2 seconds to let the user see the toast
     } catch (error) {
       console.log(error);
+    }finally {
+      recaptchaRef.current?.reset();
+      setRecaptchaToken(null);
     }
   };
 
@@ -222,6 +233,13 @@ const SignUpPage = () => {
 
           {isPasswordFocused && <PasswordStrengthMeter password={password} />}
           {/* <PasswordStrengthMeter password={password} /> */}
+
+          <ReCAPTCHA
+          ref={recaptchaRef}
+  sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+  onChange={(token) => setRecaptchaToken(token)}
+  theme="dark"
+/>
 
           <motion.button
             className='mt-5 w-full py-3 px-4 bg-white text-black cursor-pointer font-bold rounded-lg shadow-xl 

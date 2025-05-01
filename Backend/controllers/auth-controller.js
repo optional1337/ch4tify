@@ -10,59 +10,93 @@ import jwt from "jsonwebtoken";
 import { io, getReceiverSocketId } from "../utils/socket.js";
 
 export const signup = async (req, res) => {
-    const { email, password, name, alias } = req.body;
-    try {
-        if (!email || !password || !name || !alias) {
-            return res.status(400).json({success:false, message: "All fields are required" });
+  const { email, password, name, alias, captchaToken } = req.body;
+
+  try {
+    // ✅ 1. Check required fields
+    if (!email || !password || !name || !alias || !captchaToken) {
+      return res.status(400).json({ success: false, message: "All fields are required" });
+    }
+
+    // ✅ 2. CAPTCHA Verification
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const captchaResponse = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      null,
+      {
+        params: {
+          secret: secretKey,
+          response: captchaToken
         }
-    const userAlreadyExists = await User.findOne({ email});
+      }
+    );
+
+    const { success, score } = captchaResponse.data;
+
+    if (!success || (score && score < 0.5)) {
+      return res.status(400).json({ success: false, message: "CAPTCHA verification failed" });
+    }
+
+    // ✅ 3. Check if email or alias already exists
+    const userAlreadyExists = await User.findOne({ email });
     const aliasAlreadyExists = await User.findOne({ alias });
-    
+
     if (userAlreadyExists) {
-        return res.status(400).json({success:false, message: "User already exists" });
-        }
-    else if (aliasAlreadyExists) {
-        return res.status(400).json({success:false, message: "Alias already exists" });
+      return res.status(400).json({ success: false, message: "Email already in use" });
+    } else if (aliasAlreadyExists) {
+      return res.status(400).json({ success: false, message: "Alias already in use" });
     }
 
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
-	if (!passwordRegex.test(password)) {
-		return res.status(400).json({success:false, message:
-			"Password is not Strong"
+    // ✅ 4. Password strength check
+    const passwordRegex =
+      /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+    if (!passwordRegex.test(password)) {
+      return res.status(400).json({
+        success: false,
+        message: "Password must contain uppercase, lowercase, digit, special char and be at least 6 characters long"
+      });
+    }
+
+    // ✅ 5. Hash the password
+    const hashPassword = await bcryptjs.hash(password, 10);
+
+    // ✅ 6. Generate a verification token
+    const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // ✅ 7. Create and save the user
+    const newUser = new User({
+      email,
+      password: hashPassword,
+      name,
+      alias,
+      verificationToken,
+      verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000 // 24 hours
     });
-	    return;
-    }
 
-        const hashPassword = await bcryptjs.hash(password, 10);
-        const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
-        const user = new User({
-            email,
-            password: hashPassword,
-            name,
-            alias,
-            verificationToken,
-            verificationTokenExpiresAt: Date.now() + 24 * 60 * 60 * 1000 // 24 hours
-        });
-        await user.save();
+    await newUser.save();
 
-        //jwt token
-        generateTokenAndSetCookie(res, user._id);
+    // ✅ 8. Generate JWT and set as cookie
+    generateTokenAndSetCookie(res, newUser._id);
 
-        // await sendVerificationEmail(user.email, verificationToken);
+    // ✅ 9. (Optional) Send email verification
+    // await sendVerificationEmail(newUser.email, verificationToken);
 
-        res.status(201).json({
-            success:true,
-            message: "User created successfully",
-            user: {
-                ...user._doc,
-                password: undefined
-            }
+    // ✅ 10. Send response
+    res.status(201).json({
+      success: true,
+      message: "User created successfully",
+      user: {
+        ...newUser._doc,
+        password: undefined,
+        verificationToken: undefined,
+        verificationTokenExpiresAt: undefined
+      }
+    });
 
-        });
-
-    } catch (error) {
-        res.status(400).json({success:false, message: error.message});
-    }
+  } catch (error) {
+    console.error("Signup error:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 export const verifyEmail = async (req, res) => {
