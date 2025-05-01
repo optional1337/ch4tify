@@ -19,7 +19,7 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
 
-app.use(cors({ origin: "https://ch4tify-frontend.onrender.com", credentials: true }));
+app.use(cors({ origin: "https://ch4tify.club", credentials: true }));
 
 app.use(express.json()); // allowes us to parse incoming requests:req.body
 app.use(express.urlencoded({ extended: true }));
