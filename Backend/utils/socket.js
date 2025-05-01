@@ -7,7 +7,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: ["https://ch4tify-frontend.onrender.com"],
+    origin: ["https://ch4tify.club"],
   },
 });
 
