@@ -112,7 +112,7 @@ const ResetPasswordPage = () => {
 							value={password}
 							onChange={(e) => {
 								setPassword(e.target.value);
-								setIsTyping(true);
+								
 							}}
 							required
 							className={`w-full pl-10 pr-4 py-3 bg-black/70 rounded-lg text-white placeholder-white/70 focus:outline-none
@@ -132,7 +132,7 @@ const ResetPasswordPage = () => {
 							value={confirmPassword}
 							onChange={(e) => {
 								setConfirmPassword(e.target.value);
-								setIsTyping(true);
+								
 							}}
 							required
 							className={`w-full pl-10 pr-4 py-3 bg-black/70 rounded-lg text-white placeholder-white/70 focus:outline-none transition duration-300 ${isTyping ? "border-transparent focus:ring-0" : "border border-white/30 focus:ring-2 focus:ring-white focus:border-white"}`}

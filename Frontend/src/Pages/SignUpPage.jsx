@@ -38,7 +38,7 @@ const SignUpPage = () => {
   const handleAliasChange = (e) => {
     const value = e.target.value;
     setAlias(value);
-    setIsTyping(true);
+    
     const error = validateAlias(value);
     setAliasError(error);
     setErrors((prev) => ({ ...prev, alias: error || null }));
@@ -46,13 +46,13 @@ const SignUpPage = () => {
 
   const handleInputChange = (setter, key) => (e) => {
     setter(e.target.value);
-    setIsTyping(true);
+    
     setErrors((prev) => ({ ...prev, [key]: null }));
   };
 
   const handleConfirmPasswordChange = (e) => {
     setConfirmPassword(e.target.value);
-    setIsTyping(true);
+
     setErrors((prev) => ({
       ...prev,
       confirmPassword: e.target.value === password ? null : prev.confirmPassword,
