@@ -10,6 +10,7 @@ import { useAuthStore } from "../store/authStore";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { login, error, isLoading, resetError } = useAuthStore();
   const navigate = useNavigate();
@@ -17,7 +18,11 @@ const LoginPage = () => {
 
   useEffect(() => {
     resetError();
-    }, [email, password, resetError]);
+    if (isTyping) {
+      const timer = setTimeout(() => setIsTyping(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [email, password, isTyping, resetError]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -95,8 +100,12 @@ const LoginPage = () => {
             
           }}
           className={`w-full pl-10 pr-4 py-2.5 sm:py-3 bg-black/70 rounded-lg 
-          text-white placeholder-white/70 border border-white/30 focus:ring-2 focus:outline-none focus:ring-white focus:border-white transition duration-300
-          `}
+          text-white placeholder-white/70 focus:outline-none transition duration-300
+          ${
+            isTyping
+              ? "border-transparent focus:ring-0"
+              : "border border-white/30 focus:ring-2 focus:ring-white focus:border-white"
+          }`}
         />
       </div>
       {/* Password Input */}
@@ -111,8 +120,12 @@ const LoginPage = () => {
             
           }}
           className={`w-full pl-10 pr-10 py-2.5 sm:py-3 bg-black/70 rounded-lg 
-          text-white placeholder-white/70 border border-white/30 focus:ring-2 focus:outline-none focus:ring-white focus:border-whit transition duration-300
-          `}
+          text-white placeholder-white/70 focus:outline-none transition duration-300
+          ${
+            isTyping
+              ? "border-transparent focus:ring-0"
+              : "border border-white/30 focus:ring-2 focus:ring-white focus:border-white"
+          }`}
         />
         <span
           onClick={() => setShowPassword(!showPassword)}
