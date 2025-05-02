@@ -35,7 +35,7 @@ const ForgotPasswordPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen px-4">
+    <>
       <header className="absolute top-0 left-0 w-full z-30 flex items-center justify-between px-6 py-4">
         {/* Logo */}
 <motion.div
@@ -133,7 +133,7 @@ const ForgotPasswordPage = () => {
           </Link>
         </div>
       </motion.div>
-    </div>
+    </>
   );
 };
 
