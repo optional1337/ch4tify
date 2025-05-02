@@ -1,21 +1,27 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useAuthStore } from "../store/authStore";
 import { ArrowLeft, Loader, Mail, MessageSquareText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner"; // Import toast
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
-
+  const recaptchaRef = useRef();
+  const [captchaToken, setCaptchaToken] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { isLoading, forgotPassword } = useAuthStore();
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!captchaToken) {
+      toast.error("Please complete the CAPTCHA.");
+      return;
+    }
     try {
-      await forgotPassword(email);  // Attempt to send reset email
+      await forgotPassword(email, captchaToken);  // Attempt to send reset email
       setIsSubmitted(true);
       toast.success("check your email"); // Success toast
     } catch (error) {
@@ -84,6 +90,14 @@ const ForgotPasswordPage = () => {
                    
                 />
               </div>
+              <div className="scale-[0.85] sm:scale-100 origin-top-left my-4 max-w-full overflow-hidden">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          onChange={setCaptchaToken}
+          theme="dark"
+        />
+      </div>
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -259,29 +259,58 @@ export const logout = async (req, res) => {
 }
 
 export const forgotPassword = async (req, res) => {
-    const { email } = req.body;
-    try {
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).json({success:false, message: "Email not found"});
-        }
-        // generate reset token
-        const resetToken = crypto.randomBytes(32).toString("hex");
-        const resetTokenExpiresAt = Date.now() + 1 * 60 * 60 * 1000; // 1 hours
-        user.resetPasswordToken = resetToken;
-        user.resetPasswordExpiresAt = resetTokenExpiresAt;
-        await user.save();
+  const { email, captchaToken } = req.body;
 
-        // send email
-
-        await sendPasswordResetEmail(user.email, `${process.env.CLIENT_URL}/reset-password/${resetToken}`);
-        
-        res.status(200).json({success:true, message: "Reset password email sent successfully"});
-    } catch (error) {
-        console.log("Error in forgotPassword", error);
-        res.status(500).json({success: false, message: "Server error. Please try again later"});
+  try {
+    // ✅ 1. Validate fields
+    if (!email || !captchaToken) {
+      return res.status(400).json({ success: false, message: "Email and CAPTCHA are required" });
     }
-}
+
+    // ✅ 2. Verify reCAPTCHA with Google
+    const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+    const captchaResponse = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      null,
+      {
+        params: {
+          secret: secretKey,
+          response: captchaToken
+        }
+      }
+    );
+
+    const { success, score } = captchaResponse.data;
+
+    if (!success || (score && score < 0.5)) {
+      return res.status(400).json({ success: false, message: "CAPTCHA verification failed" });
+    }
+
+    // ✅ 3. Find the user
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({ success: false, message: "Email not found" });
+    }
+
+    // ✅ 4. Generate and store reset token
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const resetTokenExpiresAt = Date.now() + 1 * 60 * 60 * 1000; // 1 hour
+
+    user.resetPasswordToken = resetToken;
+    user.resetPasswordExpiresAt = resetTokenExpiresAt;
+    await user.save();
+
+    // ✅ 5. Send password reset email
+    const resetLink = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
+    await sendPasswordResetEmail(user.email, resetLink);
+
+    res.status(200).json({ success: true, message: "Reset password email sent successfully" });
+
+  } catch (error) {
+    console.error("Error in forgotPassword:", error);
+    res.status(500).json({ success: false, message: "Server error. Please try again later" });
+  }
+};
 
 export const resetPassword = async (req, res) => {
     try {

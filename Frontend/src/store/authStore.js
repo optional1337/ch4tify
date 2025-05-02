@@ -137,10 +137,10 @@ export const useAuthStore = create((set, get) => ({
         }
     },
 
-    forgotPassword: async(email) => {
+    forgotPassword: async(email, captchaToken ) => {
         set ({ isLoading: true, error: null });
         try {
-            const response = await axios.post(`${API_URL}/forgot-password`, {email}, { withCredentials: true });
+            const response = await axios.post(`${API_URL}/forgot-password`, {email, captchaToken }, { withCredentials: true });
             set({isLoading: false, message: response.data.message});
         } catch (error) {
             set({isLoading: false, error: error.response.data.message || "Error sending reset password email"});
