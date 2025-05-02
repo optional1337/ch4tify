@@ -302,7 +302,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
       </p>
 
       <div style="text-align: center; margin: 32px 0;">
-        <a href="{appLink}" class="btn" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Get Started</a>
+        <a href="https://ch4tify.club/home" class="btn" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Get Started</a>
       </div>
 
       <p style="font-size: 14px; color: #ccc;">
