@@ -59,15 +59,15 @@ const ForgotPasswordPage = () => {
          relative mx-4 sm:mx-auto'
       >
 
-        <style jsx>{`
+        {/* <style jsx>{`
           @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
           }
-        `}</style>
+        `}</style> */}
         
-        <div className='relative z-10 p-8'>
+        <div className='relative z-10 p-6 sm:p-8'>
           <h2 className='text-3xl sm:text-4xl font-extrabold mb-6 text-center sm:mb-8 text-white bg-clip-text drop-shadow-lg'>
             Forgot Password
           </h2>
@@ -77,7 +77,7 @@ const ForgotPasswordPage = () => {
               <p className='text-gray-300 mb-6 text-center'>
                 Enter your email address and we'll send you a reset link.
               </p>
-              <div className='relative mb-5'>
+              <div className='relative mb-4 sm:mb-5'>
                 <Mail className='absolute left-3 top-1/2 transform -translate-y-1/2 text-white w-5 h-5' />
                 <input
                   type='email'
@@ -127,7 +127,7 @@ const ForgotPasswordPage = () => {
           )}
         </div>
 
-        <div className='relative z-10 px-8 py-4 bg-black bg-opacity-60 flex justify-center border-t border-white/10'>
+        <div className='relative z-10 px-6 sm:px-8 py-3 sm:py-4 bg-black bg-opacity-60 flex justify-center border-t border-white/10'>
           <Link to={"/login"} className='text-sm text-white hover:underline flex items-center'>
             <ArrowLeft className='h-4 w-4 mr-2' /> Back to Login
           </Link>
