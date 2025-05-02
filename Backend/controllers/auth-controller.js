@@ -80,7 +80,7 @@ export const signup = async (req, res) => {
     generateTokenAndSetCookie(res, newUser._id);
 
     // ✅ 9. (Optional) Send email verification
-    await sendVerificationEmail(newUser.email, verificationToken);
+    await sendVerificationEmail(newUser.email, verificationToken, alias);
 
     // ✅ 10. Send response
     res.status(201).json({
