@@ -58,7 +58,7 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
 
       <p style="margin-top: 32px; font-size: 14px;">
         Best regards,<br>
-        <strong>The ch4tify Team</strong>
+        <strong>ch4tify Team</strong>
       </p>
     </div>
 
@@ -148,7 +148,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 
       <p style="margin-top: 32px; font-size: 14px;">
         Best regards,<br />
-        <strong>The ch4tify Team</strong>
+        <strong>ch4tify Team</strong>
       </p>
     </div>
 
@@ -170,8 +170,8 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Reset Your Password</title>
   <style>
     @media only screen and (max-width: 480px) {
@@ -179,13 +179,13 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
         padding: 16px !important;
       }
       .header {
-        padding: 16px !important;
         flex-direction: column !important;
-        gap: 8px !important;
+        gap: 12px !important;
+        padding: 24px !important;
       }
-      .header img {
-        width: 32px !important;
-        height: 32px !important;
+      .logo {
+        width: 36px !important;
+        height: 36px !important;
       }
       .btn {
         padding: 10px 16px !important;
@@ -195,43 +195,59 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
   </style>
 </head>
 
-<body style="font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: #0f0f0f; color: #e5e5e5; max-width: 600px; margin: 0 auto; padding: 0;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Arial, sans-serif; background-color: #0f0f0f; color: #e5e5e5;">
 
-  <!-- Header -->
-  <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
-    <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4yify</h1>
-  </div>
+  <!-- Container -->
+  <div style="max-width: 600px; margin: 40px auto; background-color: #1c1c1c; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
 
-  <!-- Content -->
-  <div class="container" style="background-color: #1c1c1c; padding: 24px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
-    <p style="color: #e5e5e5; margin-bottom: 12px;">Hi there,</p>
-    <p style="color: #e5e5e5; margin-bottom: 12px;">We received a request to reset your password. If this was you, click below to reset it:</p>
-
-    <div style="text-align: center; margin: 30px 0;">
-      <a href="{resetURL}" class="btn" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Reset Password</a>
+    <!-- Header -->
+    <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 32px; display: flex; align-items: center; justify-content: center; gap: 16px;">
+      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" width="40" height="40" class="logo" style="border-radius: 8px;">
+      <h1 style="margin: 0; color: #fff; font-size: 24px;">ch4tify</h1>
     </div>
 
-    <p style="color: #e5e5e5;">If you did not request a password reset, you can safely ignore this email.</p>
-    <p style="color: #e5e5e5;">For security, this link will expire in 1 hour.</p>
+    <!-- Content -->
+    <div class="container" style="padding: 32px;">
+      <p style="font-size: 16px; margin-bottom: 12px;">Hi there,</p>
 
-    <p style="color: #e5e5e5; margin-top: 30px; text-align: center; font-size: 0.9em;">
-      <a href="https://ch4tify.club/login" style="color: #10b981; text-decoration: underline;">Go to Chat App</a>
-    </p>
+      <p style="font-size: 15px; margin-bottom: 16px;">
+        We received a request to reset your password. If this was you, click the button below to reset it:
+      </p>
 
-    <p style="color: #e5e5e5;">Stay safe and chat on! 💬</p>
-    <p style="color: #e5e5e5;">Best regards,<br>Your Chat App Team</p>
-  </div>
+      <div style="text-align: center; margin: 32px 0;">
+        <a href="{resetURL}" class="btn" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Reset Password</a>
+      </div>
 
-  <!-- Footer -->
-  <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.75em; padding: 0 16px;">
-    <p>This is an automated message, please do not reply.</p>
+      <p style="font-size: 14px; color: #ccc;">
+        If you did not request a password reset, no action is needed — you can safely ignore this email.
+      </p>
+
+      <p style="font-size: 14px; color: #ccc;">
+        For security reasons, this link will expire in 1 hour.
+      </p>
+
+      <p style="text-align: center; margin-top: 32px;">
+        <a href="https://ch4tify.club/login" style="color: #10b981; text-decoration: underline; font-size: 14px;">Go to ch4tify</a>
+      </p>
+
+      <p style="font-size: 14px; margin-top: 24px;">Stay safe and chat on! 💬</p>
+
+      <p style="margin-top: 32px; font-size: 14px;">
+        Best regards,<br />
+        <strong>ch4tify Team</strong>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div style="background-color: #111; padding: 20px; text-align: center; color: #777; font-size: 12px;">
+      <p style="margin: 0;">This is an automated message. Please do not reply.</p>
+    </div>
+
   </div>
 
 </body>
 
 </html>
-
 `;
 
 export const WELCOME_EMAIL_TEMPLATE = `
@@ -280,7 +296,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 
     <p style="color: #e5e5e5;">If you have any questions or need help, feel free to reach out to our support team.</p>
     <p style="color: #e5e5e5;">Happy chatting! 🚀</p>
-    <p style="color: #e5e5e5;">Best regards,<br>Your App Team</p>
+    <p style="color: #e5e5e5;">Best regards,<br>ch4tify Team</p>
   </div>
 
   <!-- Footer -->
