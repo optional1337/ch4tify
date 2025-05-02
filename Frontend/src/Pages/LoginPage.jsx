@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Lock, Loader, Eye, EyeClosed, MessageSquareText } from "lucide-react";
+import { Mail, Lock, Loader, Eye, EyeClosed, MessageSquare } from "lucide-react";
 import { Link,  useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { useAuthStore } from "../store/authStore";
@@ -69,7 +69,7 @@ const LoginPage = () => {
     ease: [0.68, -0.55, 0.265, 1.55] // custom springy cubic-bezier for bounce
   }}
 >
-  <MessageSquareText className="w-6 h-6 text-primary" />
+  <MessageSquare className="w-6 h-6 text-primary" />
   <span className="font-bold text-lg text-white tracking-wider">ch4tify</span>
 </motion.div>
 </header>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuthStore } from "../store/authStore";
 import { toast } from "sonner";
-import { MessageSquareText } from "lucide-react";
+import { MessageSquare } from "lucide-react";
 import { cn } from "@/lib/utils"; 
 import { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from "@/components/ui/input-otp"; // <--- imported
 
@@ -52,7 +52,7 @@ const EmailVerificationPage = () => {
             ease: [0.68, -0.55, 0.265, 1.55],
           }}
         >
-          <MessageSquareText className="w-6 h-6 text-primary" />
+          <MessageSquare className="w-6 h-6 text-primary" />
           <span className="font-bold text-lg text-white tracking-wider">ch4tify</span>
         </motion.div>
       </header>

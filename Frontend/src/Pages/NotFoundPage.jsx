@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { useNavigate } from 'react-router-dom'
-import { MessageSquareText } from 'lucide-react'
+import { MessageSquare } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const NotFoundPage = () => {
@@ -24,7 +24,7 @@ const NotFoundPage = () => {
             ease: [0.68, -0.55, 0.265, 1.55] 
           }}
         >
-          <MessageSquareText className="w-6 h-6 text-primary" />
+          <MessageSquare className="w-6 h-6 text-primary" />
           <span className="font-bold text-white text-lg tracking-wider">ch4tify</span>
         </motion.div>
       </header>

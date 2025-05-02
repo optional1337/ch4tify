@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import { useAuthStore } from "../store/authStore";
-import { ArrowLeft, Loader, Mail, MessageSquareText } from "lucide-react";
+import { ArrowLeft, Loader, Mail, MessageSquare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -44,7 +44,7 @@ const ForgotPasswordPage = () => {
             ease: [0.68, -0.55, 0.265, 1.55],
           }}
         >
-          <MessageSquareText className="w-6 h-6 text-primary" />
+          <MessageSquare className="w-6 h-6 text-primary" />
           <span className="font-bold text-lg text-white tracking-wider">
             ch4tify
           </span>

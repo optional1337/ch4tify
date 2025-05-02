@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Loader, Lock, Mail, User, Ghost, Eye, EyeOff, MessageSquareText, EyeClosed } from 'lucide-react';
+import { Loader, Lock, Mail, User, Ghost, Eye, EyeOff, MessageSquare, EyeClosed } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
@@ -114,7 +114,7 @@ const SignUpPage = () => {
     ease: [0.68, -0.55, 0.265, 1.55] // custom springy cubic-bezier for bounce
   }}
 >
-  <MessageSquareText className="w-6 h-6 text-primary" />
+  <MessageSquare className="w-6 h-6 text-primary" />
   <span className="font-bold text-lg text-white tracking-wider" onClick={() => navigate('/')}>ch4tify</span>
 </motion.div>
 </header>
