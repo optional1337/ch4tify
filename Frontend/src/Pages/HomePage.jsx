@@ -5,7 +5,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Preload } from '@react-three/drei';
 import { useThemeStore } from '../store/ThemeStore';
 import { Button } from '@/components/ui/button';
-import { MessageSquareText } from 'lucide-react';
+import { MessageSquare } from 'lucide-react';
 
 import StarsCanvas from "../canvas/stars";
 import Mailbox from '../canvas/mailbox';
@@ -49,7 +49,7 @@ const HomePage = () => {
     ease: [0.68, -0.55, 0.265, 1.55] // custom springy cubic-bezier for bounce
   }}
 >
-  <MessageSquareText className="w-6 h-6 text-primary" />
+  <MessageSquare className="w-6 h-6 text-primary" />
   <span className="font-bold text-lg text-white tracking-wider">ch4tify</span>
 </motion.div>
 
@@ -75,7 +75,7 @@ const HomePage = () => {
 
       {/* Hero Section */}
       <motion.div
-        className="absolute bottom-24 md:bottom-32 text-center px-6 z-30"
+        className="absolute bottom-24 md:bottom-28 text-center px-6 z-30"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
