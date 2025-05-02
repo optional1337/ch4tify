@@ -31,7 +31,7 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
 
   <!-- Header -->
   <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://yourappdomain.com/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
+    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
     <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4tify</h1>
   </div>
 
@@ -91,7 +91,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
 
   <!-- Header -->
   <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://yourappdomain.com/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
+    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
     <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4tify</h1>
   </div>
 
@@ -115,7 +115,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
     </ul>
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://yourappdomain.com/login" style="background-color: #10b981; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Chat App</a>
+      <a href="https://ch4tify.club/login" style="background-color: #10b981; color: white; padding: 12px 20px; text-decoration: none; border-radius: 8px; font-weight: bold;">Go to Chat App</a>
     </div>
 
     <p style="color: #e5e5e5;">See you soon on the app! 👋</p>
@@ -167,7 +167,7 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
 
   <!-- Header -->
   <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://yourappdomain.com/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
+    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
     <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4yify</h1>
   </div>
 
@@ -184,7 +184,7 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
     <p style="color: #e5e5e5;">For security, this link will expire in 1 hour.</p>
 
     <p style="color: #e5e5e5; margin-top: 30px; text-align: center; font-size: 0.9em;">
-      <a href="https://yourappdomain.com/login" style="color: #10b981; text-decoration: underline;">Go to Chat App</a>
+      <a href="https://ch4tify.club/login" style="color: #10b981; text-decoration: underline;">Go to Chat App</a>
     </p>
 
     <p style="color: #e5e5e5;">Stay safe and chat on! 💬</p>
@@ -232,7 +232,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 
   <!-- Header -->
   <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://yourappdomain.com/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
+    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
     <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4tify</h1>
   </div>
 
