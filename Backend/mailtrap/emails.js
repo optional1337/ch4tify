@@ -5,19 +5,24 @@ export const sendVerificationEmail = async (email, verificationToken, alias) => 
     const recipient = [{email}]
 
     try {
+        const html = VERIFICATION_EMAIL_TEMPLATE
+          .replace("{verificationCode}", verificationToken)
+          .replace("{username}", alias);
+    
         const response = await mailtrapClient.send({
-            from: sender,
-            to: recipient,
-            subject: "Email Verification",
-            html: VERIFICATION_EMAIL_TEMPLATE.replace("{verificationCode}, {username}", verificationToken, alias),
-            category: "Email Verification"
+          from: sender,
+          to: recipient,
+          subject: "Email Verification",
+          html,
+          category: "Email Verification",
         });
-
-        console.log("Email sent successfully: ", response)
-    } catch (error) {
-        console.error("Email sending failed: ", error)
-        throw new Error(`Email sending failed: ${error}`)
-    }
+    
+        console.log("Email sent successfully: ", response);
+      } catch (error) {
+        console.error("Email sending failed: ", error);
+        throw new Error(`Email sending failed: ${error}`);
+      }
+    
 };
 
 export const sendWelcomeEmail = async (email, alias) => {
