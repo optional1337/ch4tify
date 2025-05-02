@@ -234,7 +234,7 @@ const SignUpPage = () => {
           {isPasswordFocused && <PasswordStrengthMeter password={password} />}
           {/* <PasswordStrengthMeter password={password} /> */}
 
-          <div className="scale-75 sm:scale-100 origin-top-left my-4 max-w-full overflow-hidden">
+          <div className="scale-[0.85] sm:scale-100 origin-top-left my-4 max-w-full overflow-hidden">
   <ReCAPTCHA
     ref={recaptchaRef}
     sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
