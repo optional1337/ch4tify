@@ -1,6 +1,7 @@
 import { User } from "../models/user-model.js";
 import Group from "../models/Group.js";
 // import Admin  from "../models/Admin.js"
+import axios from "axios";
 import bcryptjs, { compare } from "bcryptjs";
 import crypto from "crypto";
 import { sendVerificationEmail, sendWelcomeEmail, sendPasswordResetEmail, sendResetSuccessEmail } from "../mailtrap/emails.js";
