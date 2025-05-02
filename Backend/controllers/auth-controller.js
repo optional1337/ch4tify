@@ -80,7 +80,7 @@ export const signup = async (req, res) => {
     generateTokenAndSetCookie(res, newUser._id);
 
     // ✅ 9. (Optional) Send email verification
-    // await sendVerificationEmail(newUser.email, verificationToken);
+    await sendVerificationEmail(newUser.email, verificationToken);
 
     // ✅ 10. Send response
     res.status(201).json({
@@ -115,7 +115,7 @@ export const verifyEmail = async (req, res) => {
         user.verificationTokenExpiresAt = undefined;
         await user.save();
 
-        // await sendWelcomeEmail(user.email, user.alias);
+        await sendWelcomeEmail(user.email, user.alias);
 
         res.status(200).json({
             success:true,
@@ -346,7 +346,7 @@ export const resetPassword = async (req, res) => {
         await user.save(); 
 
         // Send email (optional)
-        // await sendResetSuccessEmail(user.email);
+        await sendResetSuccessEmail(user.email);
 
         res.status(200).json({ success: true, message: "Password reset successfully" });
     } catch (error) {
