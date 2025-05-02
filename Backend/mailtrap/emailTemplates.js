@@ -255,57 +255,76 @@ export const WELCOME_EMAIL_TEMPLATE = `
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to Your App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome to ch4tify</title>
   <style>
     @media only screen and (max-width: 480px) {
       .container {
         padding: 16px !important;
       }
       .header {
-        padding: 16px !important;
         flex-direction: column !important;
-        gap: 8px !important;
+        gap: 12px !important;
+        padding: 24px !important;
       }
-      .header img {
-        width: 32px !important;
-        height: 32px !important;
+      .logo {
+        width: 36px !important;
+        height: 36px !important;
+      }
+      .btn {
+        padding: 10px 16px !important;
+        font-size: 14px !important;
       }
     }
   </style>
 </head>
 
-<body style="font-family: 'Segoe UI', Roboto, Arial, sans-serif; background: #0f0f0f; color: #e5e5e5; max-width: 600px; margin: 0 auto; padding: 0;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Arial, sans-serif; background-color: #0f0f0f; color: #e5e5e5;">
 
-  <!-- Header -->
-  <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 24px; text-align: center; border-top-left-radius: 16px; border-top-right-radius: 16px; display: flex; align-items: center; justify-content: center; gap: 12px;">
-    <img src="https://ch4tify.club/logo.png" alt="App Icon" width="36" height="36" style="border-radius: 8px;">
-    <h1 style="color: white; margin: 0; font-size: 1.75em;">ch4tify</h1>
-  </div>
+  <!-- Container -->
+  <div style="max-width: 600px; margin: 40px auto; background-color: #1c1c1c; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
 
-  <!-- Content -->
-  <div class="container" style="background-color: #1c1c1c; padding: 24px; border-radius: 0 0 16px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.6);">
-    <h2 style="color: #10b981;">Welcome aboard!</h2>
-    <p style="color: #e5e5e5;">Hello {userName},</p>
-    <p style="color: #e5e5e5;">We're excited to have you join <strong>Your App</strong>! Start connecting and chatting with people in real time.</p>
-
-    <div style="text-align: center; margin: 30px 0;">
-      <a href="{appLink}" style="background-color: #10b981; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Get Started</a>
+    <!-- Header -->
+    <div class="header" style="background: linear-gradient(135deg, #10b981, #14b8a6); padding: 32px; display: flex; align-items: center; justify-content: center; gap: 16px;">
+      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" width="40" height="40" class="logo" style="border-radius: 8px;">
+      <h1 style="margin: 0; color: #fff; font-size: 24px;">ch4tify</h1>
     </div>
 
-    <p style="color: #e5e5e5;">If you have any questions or need help, feel free to reach out to our support team.</p>
-    <p style="color: #e5e5e5;">Happy chatting! 🚀</p>
-    <p style="color: #e5e5e5;">Best regards,<br>ch4tify Team</p>
-  </div>
+    <!-- Content -->
+    <div class="container" style="padding: 32px;">
+      <h2 style="color: #10b981; font-size: 22px;">Welcome aboard!</h2>
 
-  <!-- Footer -->
-  <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.75em; padding: 0 16px;">
-    <p>This is an automated message, please do not reply.</p>
+      <p style="font-size: 16px; margin-bottom: 12px;">Hello {userName},</p>
+
+      <p style="font-size: 15px; margin-bottom: 16px;">
+        We're thrilled to have you join <strong>ch4tify</strong>! Dive in and start chatting in real-time with your friends and groups.
+      </p>
+
+      <div style="text-align: center; margin: 32px 0;">
+        <a href="{appLink}" class="btn" style="background-color: #10b981; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">Get Started</a>
+      </div>
+
+      <p style="font-size: 14px; color: #ccc;">
+        Need help or have questions? Feel free to reach out to our support team anytime.
+      </p>
+
+      <p style="font-size: 14px; margin-top: 24px;">Happy chatting! 🚀</p>
+
+      <p style="margin-top: 32px; font-size: 14px;">
+        Best regards,<br />
+        <strong>ch4tify Team</strong>
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div style="background-color: #111; padding: 20px; text-align: center; color: #777; font-size: 12px;">
+      <p style="margin: 0;">This is an automated message. Please do not reply.</p>
+    </div>
+
   </div>
 
 </body>
 
 </html>
-
 `;
