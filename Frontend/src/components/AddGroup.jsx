@@ -19,7 +19,7 @@ const AddGroup = ({ open, onOpenChange }) => {
   const [groupName, setGroupName] = useState("");
   const [selectedUsers, setSelectedUsers] = useState([]);
   const { getUsers, users } = chatStore();
-  const { user, getFriends, setIsFriendsLoading, createGroup } = useAuthStore();
+  const { user, getFriends, createGroup } = useAuthStore();
   const [friends, setFriends] = useState([]);
 
 
@@ -39,7 +39,6 @@ const AddGroup = ({ open, onOpenChange }) => {
     const fetchFriends = async () => {
       const fetchedFriends = await getFriends();
       const filtered = fetchedFriends.filter((u) => u._id !== user._id);
-      setIsFriendsLoading(false);
       setFriends(filtered);
       setResults(filtered);
     };
