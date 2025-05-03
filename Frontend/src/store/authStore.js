@@ -16,6 +16,7 @@ export const useAuthStore = create((set, get) => ({
     error: null,
     isLoading: false,
     isFriendsLoading: false,
+    setIsFriendsLoading: (value) => set({ isFriendsLoading: value }),
     isCheckingAuth: true,
     message: null,
     onlineUsers: [],
