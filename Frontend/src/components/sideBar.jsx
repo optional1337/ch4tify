@@ -62,7 +62,10 @@ useEffect(() => {
     return (showOnlineOnly ? isOnline : true) && matchesSearch;
   });
 
-  if (isUsersLoading) return <SidebarSkeleton />;
+  if (isUsersLoading || !Array.isArray(friends)) {
+    return <SidebarSkeleton />;
+  }
+  
 
   return (
     <aside className="h-full w-75 border-r border-base-300 flex flex-col transition-all duration-200">
