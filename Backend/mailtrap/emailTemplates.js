@@ -10,139 +10,184 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
       margin: 0;
       padding: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #f4f7fa;
       color: #1f2a44;
     }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    .header {
-      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-      padding: 40px;
+    .external-header {
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
-      transform: rotate(45deg);
+      padding: 24px 0;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .logo {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
       vertical-align: middle;
-      margin-right: 8px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
     }
-    .header h1 {
+    .logo:hover {
+      transform: scale(1.1);
+    }
+    .external-header h1 {
       margin: 0;
-      color: #ffffff;
-      font-size: 28px;
+      color: #1f2a44;
+      font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.5px;
       display: inline-block;
       vertical-align: middle;
     }
+    .container {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
     .content {
-      padding: 40px;
+      padding: 48px;
       text-align: center;
     }
     .content p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 0 0 24px;
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 0 0 28px;
       color: #4b5563;
+    }
+    .code-container {
+      position: relative;
+      display: inline-block;
+      margin: 32px 0;
     }
     .code {
       display: inline-block;
-      font-size: 32px;
+      font-size: 34px;
       font-weight: 700;
-      letter-spacing: 8px;
-      padding: 16px 32px;
-      background: #f0fdf4;
-      color: #15803d;
+      letter-spacing: 10px;
+      padding: 18px 36px;
+      background: #ecfdf5;
+      color: #047857;
       border-radius: 12px;
-      margin: 32px 0;
-      border: 1px solid #d1fae5;
+      border: 1px solid #a7f3d0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .code:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .tooltip {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #047857;
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .tooltip.show {
+      opacity: 1;
     }
     .button {
       display: inline-block;
-      padding: 12px 24px;
-      background: #3b82f6;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
       margin: 16px 0;
-      transition: background 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .button:hover {
-      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
     .footer {
-      background-color: #f8fafc;
-      padding: 24px;
+      background-color: #f9fafb;
+      padding: 28px;
       text-align: center;
       color: #6b7280;
-      font-size: 12px;
+      font-size: 13px;
       border-top: 1px solid #e5e7eb;
     }
     @media only screen and (max-width: 480px) {
+      .external-header {
+        padding: 16px 0;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+      .external-header h1 {
+        font-size: 24px;
+      }
       .container {
-        margin: 20px;
+        margin: 0 16px 20px;
         border-radius: 16px;
       }
-      .header {
-        padding: 24px;
-      }
-      .header h1 {
-        font-size: 24px;
-      }
       .content {
-        padding: 24px;
+        padding: 28px;
       }
       .code {
-        font-size: 24px;
-        letter-spacing: 4px;
-        padding: 12px 24px;
+        font-size: 26px;
+        letter-spacing: 6px;
+        padding: 14px 24px;
       }
       .button {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 14px;
+      }
+      .tooltip {
+        font-size: 12px;
+        padding: 4px 8px;
+        top: -36px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="external-header">
+    <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
+    <h1>ch4tify</h1>
+  </div>
   <div class="container">
-    <div class="header">
-      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
-      <h1>ch4tify</h1>
-    </div>
     <div class="content">
       <p>Hi <strong>{username}</strong>,</p>
-      <p>Welcome to <strong>ch4tify</strong>! We're thrilled to have you on board. Please verify your email address using the code below:</p>
-      <div class="code">{verificationCode}</div>
+      <p>Welcome to <strong>ch4tify</strong>! We're excited to have you on board. Please verify your email address using the code below:</p>
+      <div class="code-container">
+        <div class="code" onclick="copyCode(this)" data-code="{verificationCode}">{verificationCode}</div>
+        <span class="tooltip">Copied!</span>
+      </div>
       <p>This code is valid for <strong>15 minutes</strong>. Alternatively, you can click the button below to verify directly:</p>
       <a href="https://ch4tify.club/verify-email" class="button">Verify Email Now</a>
       <p>If you didn’t sign up, feel free to ignore this email.</p>
     </div>
     <div class="footer">
       <p>This is an automated email. Please do not reply.</p>
-      <p>&copy; 2025 ch4tify. All rights reserved.</p>
+      <p>© 2025 ch4tify. All rights reserved.</p>
     </div>
   </div>
+  <script>
+    function copyCode(element) {
+      const code = element.getAttribute('data-code');
+      navigator.clipboard.writeText(code).then(() => {
+        const tooltip = element.nextElementSibling;
+        tooltip.classList.add('show');
+        setTimeout(() => tooltip.classList.remove('show'), 1500);
+      }).catch(err => console.error('Failed to copy code:', err));
+    }
+  </script>
 </body>
 </html>
 `;
@@ -163,30 +208,11 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
       background-color: #f4f7fa;
       color: #1f2a44;
     }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-    .header {
-      background: linear-gradient(135deg, #5eead4, #3b82f6);
-      padding: 48px;
+    .external-header {
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
-      transform: rotate(30deg);
+      padding: 24px 0;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .logo {
       width: 52px;
@@ -199,14 +225,22 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
     .logo:hover {
       transform: scale(1.1);
     }
-    .header h1 {
+    .external-header h1 {
       margin: 0;
-      color: #ffffff;
+      color: #1f2a44;
       font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.5px;
       display: inline-block;
       vertical-align: middle;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     }
     .content {
       padding: 48px;
@@ -241,6 +275,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
       font-size: 16px;
       margin: 16px 0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .button:hover {
       transform: translateY(-2px);
@@ -279,15 +314,19 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
       to { transform: scale(1); opacity: 1; }
     }
     @media only screen and (max-width: 480px) {
+      .external-header {
+        padding: 16px 0;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+      .external-header h1 {
+        font-size: 24px;
+      }
       .container {
-        margin: 20px;
+        margin: 0 16px 20px;
         border-radius: 16px;
-      }
-      .header {
-        padding: 28px;
-      }
-      .header h1 {
-        font-size: 26px;
       }
       .content {
         padding: 28px;
@@ -306,11 +345,11 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
   </style>
 </head>
 <body>
+  <div class="external-header">
+    <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
+    <h1>ch4tify</h1>
+  </div>
   <div class="container">
-    <div class="header">
-      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
-      <h1>ch4tify</h1>
-    </div>
     <div class="content">
       <p>Hi <strong>{username}</strong>,</p>
       <p>Your password has been <strong>successfully reset</strong> 🎉</p>
@@ -347,117 +386,118 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
       margin: 0;
       padding: 0;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      background-color: #f5f5f5;
+      background-color: #f4f7fa;
       color: #1f2a44;
     }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-    .header {
-      background: linear-gradient(135deg, #6ee7b7, #3b82f6);
-      padding: 40px;
+    .external-header {
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
-      transform: rotate(45deg);
+      padding: 24px 0;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .logo {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 12px;
       vertical-align: middle;
-      margin-right: 8px;
+      margin-right: 10px;
+      transition: transform 0.3s ease;
     }
-    .header h1 {
+    .logo:hover {
+      transform: scale(1.1);
+    }
+    .external-header h1 {
       margin: 0;
-      color: #ffffff;
-      font-size: 28px;
+      color: #1f2a44;
+      font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.5px;
       display: inline-block;
       vertical-align: middle;
     }
+    .container {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
     .content {
-      padding: 40px;
+      padding: 48px;
       text-align: center;
     }
     .content p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 0 0 24px;
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 0 0 28px;
       color: #4b5563;
     }
     .button {
       display: inline-block;
-      padding: 12px 24px;
-      background: #3b82f6;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #3b82f6, #60a5fa);
       color: #ffffff;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 16px;
       margin: 16px 0;
-      transition: background 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .button:hover {
-      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     }
     .link {
-      color: #3b82f6;
+      color: #1d4ed8;
       text-decoration: underline;
-      font-size: 16px;
+      font-size: 17px;
+      transition: color 0.3s ease;
     }
     .link:hover {
-      color: #2563eb;
+      color: #1e40af;
     }
     .footer {
-      background-color: #f8fafc;
-      padding: 24px;
+      background-color: #f9fafb;
+      padding: 28px;
       text-align: center;
       color: #6b7280;
-      font-size: 12px;
+      font-size: 13px;
       border-top: 1px solid #e5e7eb;
     }
     @media only screen and (max-width: 480px) {
-      .container {
-        margin: 20px;
-        border-radius: 16px;
+      .external-header {
+        padding: 16px 0;
       }
-      .header {
-        padding: 24px;
+      .logo {
+        width: 40px;
+        height: 40px;
       }
-      .header h1 {
+      .external-header h1 {
         font-size: 24px;
       }
+      .container {
+        margin: 0 16px 20px;
+        border-radius: 16px;
+      }
       .content {
-        padding: 24px;
+        padding: 28px;
       }
       .button {
-        padding: 10px 20px;
+        padding: 12px 20px;
         font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="external-header">
+    <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
+    <h1>ch4tify</h1>
+  </div>
   <div class="container">
-    <div class="header">
-      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
-      <h1>ch4tify</h1>
-    </div>
     <div class="content">
       <p>Hi there,</p>
       <p>We received a request to reset your password. If this was you, click the button below to reset it:</p>
@@ -491,30 +531,11 @@ export const WELCOME_EMAIL_TEMPLATE = `
       background-color: #f4f7fa;
       color: #1f2a44;
     }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background-color: #ffffff;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    }
-    .header {
-      background: linear-gradient(135deg, #5eead4, #3b82f6);
-      padding: 48px;
+    .external-header {
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), transparent);
-      transform: rotate(30deg);
+      padding: 24px 0;
+      max-width: 600px;
+      margin: 0 auto;
     }
     .logo {
       width: 52px;
@@ -527,14 +548,22 @@ export const WELCOME_EMAIL_TEMPLATE = `
     .logo:hover {
       transform: scale(1.1);
     }
-    .header h1 {
+    .external-header h1 {
       margin: 0;
-      color: #ffffff;
+      color: #1f2a44;
       font-size: 30px;
       font-weight: 700;
       letter-spacing: 0.5px;
       display: inline-block;
       vertical-align: middle;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      background-color: #ffffff;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
     }
     .content {
       padding: 48px;
@@ -564,6 +593,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
       font-size: 16px;
       margin: 16px 0;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
     .button:hover {
       transform: translateY(-2px);
@@ -582,15 +612,19 @@ export const WELCOME_EMAIL_TEMPLATE = `
       to { opacity: 1; transform: translateY(0); }
     }
     @media only screen and (max-width: 480px) {
+      .external-header {
+        padding: 16px 0;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+      }
+      .external-header h1 {
+        font-size: 24px;
+      }
       .container {
-        margin: 20px;
+        margin: 0 16px 20px;
         border-radius: 16px;
-      }
-      .header {
-        padding: 28px;
-      }
-      .header h1 {
-        font-size: 26px;
       }
       .content {
         padding: 28px;
@@ -606,11 +640,11 @@ export const WELCOME_EMAIL_TEMPLATE = `
   </style>
 </head>
 <body>
+  <div class="external-header">
+    <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
+    <h1>ch4tify</h1>
+  </div>
   <div class="container">
-    <div class="header">
-      <img src="https://ch4tify.club/logo.png" alt="ch4tify Logo" class="logo">
-      <h1>ch4tify</h1>
-    </div>
     <div class="content">
       <h2>Welcome aboard!</h2>
       <p>Hello <strong>{userName}</strong>,</p>
