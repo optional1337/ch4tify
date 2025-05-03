@@ -15,6 +15,7 @@ export const useAuthStore = create((set, get) => ({
     isAuthenticated: false,
     error: null,
     isLoading: false,
+    isFriendsLoading: false,
     isCheckingAuth: true,
     message: null,
     onlineUsers: [],
@@ -291,16 +292,21 @@ declineFriendRequest: async (senderId) => {
 
 // 🔄 Fetch current friends list
 getFriends: async () => {
-  set({ isLoading: true, error: null });
-    try {
-        const res = await axios.get(`${BASE_URL}/api/friends/list`, { withCredentials: true });
-        set({ friends: res.data.friends });
-        return res.data.friends; // array of user profiles
-    } catch (error) {
-        toast.error("Could not fetch friends list");
-        return [];
-    }
+  set({ isFriendsLoading: true, error: null }); // ⬅️ use this
+  try {
+    const res = await axios.get(`${BASE_URL}/api/friends/list`, {
+      withCredentials: true,
+    });
+    set({ friends: res.data.friends });
+    return res.data.friends;
+  } catch (error) {
+    toast.error("Could not fetch friends list");
+    return [];
+  } finally {
+    set({ isFriendsLoading: false }); // ⬅️ done loading
+  }
 },
+
 
 removeFriend: async (friendId) => {
     try {

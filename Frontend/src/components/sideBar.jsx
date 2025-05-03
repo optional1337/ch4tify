@@ -19,7 +19,7 @@ const Sidebar = () => {
     lastMessages,
   } = chatStore();
 
-  const { onlineUsers, user, friends, getFriends, groups, getGroups } = useAuthStore();
+  const { onlineUsers, user, friends, getFriends, groups, getGroups, isFriendsLoading } = useAuthStore();
 
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
   const [unreadUpdate, setUnreadUpdate] = useState(0);
@@ -62,7 +62,7 @@ useEffect(() => {
     return (showOnlineOnly ? isOnline : true) && matchesSearch;
   });
 
-  if (isUsersLoading) return <SidebarSkeleton />;
+  if (isFriendsLoading) return <SidebarSkeleton />;
 
   return (
     <aside className="h-full w-75 border-r border-base-300 flex flex-col transition-all duration-200">
@@ -237,9 +237,10 @@ useEffect(() => {
   </>
 )}
 
-        {filteredUsers.length === 0 && (
-          <div className="text-center text-zinc-500 py-4 pt-40">No friend found</div>
-        )}
+{!isFriendsLoading && filteredUsers.length === 0 && (
+  <div className="text-center text-zinc-500 py-4 pt-40">No friend found</div>
+)}
+
       </div>
       {/* Modal Component Mount */}
       <AddUser open={addUserOpen} onOpenChange={setAddUserOpen} />
