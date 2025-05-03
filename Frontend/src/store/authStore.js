@@ -291,6 +291,7 @@ declineFriendRequest: async (senderId) => {
 
 // 🔄 Fetch current friends list
 getFriends: async () => {
+  set({ isLoading: true, error: null });
     try {
         const res = await axios.get(`${BASE_URL}/api/friends/list`, { withCredentials: true });
         set({ friends: res.data.friends });
