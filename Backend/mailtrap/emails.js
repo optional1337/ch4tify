@@ -6,7 +6,7 @@ export const sendVerificationEmail = async (email, verificationToken, alias) => 
 
     try {
         const html = VERIFICATION_EMAIL_TEMPLATE
-          .replace("{verificationCode}", verificationToken)
+          .replaceAll("{verificationCode}", verificationToken)
           .replace("{username}", alias);
     
         const response = await mailtrapClient.send({
